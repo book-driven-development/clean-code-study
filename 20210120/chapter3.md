@@ -311,5 +311,22 @@ public enum Error {
 
 # 토론
 1. 한 가지만 해라 라는 것이 보는 범위에 따라서 다른것이 아닐까? 넓게보면 한 가지만 하는것이지만 그 내부에서는 여러개의 함수를 호출 할 수도 있지않은가?
+    ```
+    public void doProcess(){
+        doRead();
+        doPreProcess();
+        doWrite();
+    }
+    ```
 2. 한 가지만 하는 함수를 작성할때 플래그 인수를 넘기는 경우가 생기는데 어떻게 보는것이 좋을까?
+    ```
+    public void doSomethingBySearchType(int searchType){
+        if(searchType == SEARCH_TYPE_MONTHLY)
+            ...
+        else if(searchType == SEARCH_TYPE_WEEKLY)
+            ...
+        else if(searchType == SEARCH_TYPE_DAILLY)
+            ...
+    }
+    ```
 3. 반복문에서 `break`나 `continue`를 쓰는것이 성능적을 좋은 경우가 있는데 반드시 사용을 지양해야할까?
