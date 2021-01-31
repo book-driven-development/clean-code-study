@@ -1,5 +1,24 @@
-Chapter6 . 객체와 자료 구조 
-=======================
+# Chapter6 - 객체와 자료 구조 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Chapter6 - 객체와 자료 구조](#chapter6-객체와-자료-구조)
+  - [자료 추상화](#자료-추상화)
+    - [6-3과 6-4는 필요에 따라 메서드 구현이 달라지는게 아닌가?](#6-3과-6-4는-필요에-따라-메서드-구현이-달라지는게-아닌가)
+  - [자료/객체 비대칭](#자료객체-비대칭)
+  - [디미터 법칙](#디미터-법칙)
+    - [기차 충돌](#기차-충돌)
+    - [간결하고 깔끔해 보이지 않는가](#간결하고-깔끔해-보이지-않는가)
+    - [잡종 구조](#잡종-구조)
+    - [구조체 감추기](#구조체-감추기)
+  - [자료 전달 객체](#자료-전달-객체)
+  - [결론](#결론)
+
+<!-- /code_chunk_output -->
+
+
 ## 자료 추상화
 ```
 // 6-1
@@ -20,7 +39,8 @@ public interface Point {
 ```
 - 6-1은 구현을 노출한다. 변수를 private으로 선언 하더라도 각 값마다 조회 함수와 설정 함수를 제공한다면 구현을 외부로 노출하는 셈이다.
 - 6-2는 메서드가 접근 정책을 강제한다. 좌표를 읽을 때는 각 값을 개별적으로, 설정 할 때는 두 값을 한꺼번에 설정 해야 한다.
-> ### 6-2도 getter, setter 있는데 노출 하는거 아닌가?
+
+ ### 6-2도 getter, setter 있는데 노출 하는거 아닌가?
 ```
 // 6-3
 public interface Vehicle {
@@ -35,10 +55,12 @@ public interface Vehicle {
 ```
 - 6-3은 자동차 연료 상태를 구체적인 숫자 값으로 알려준다.
 - 6-4는 자동차 연료 상태를 백분율이라는 추상적인 개념으로 알려준다
-> ### 6-3과 6-4는 필요에 따라 메서드 구현이 달라지는게 아닌가?
+
+### 6-3과 6-4는 필요에 따라 메서드 구현이 달라지는게 아닌가?
 
 - 6-1과 6-2에서는 6-2가, 6-3과 6-4에서는 6-4가 더 좋다.
 - 인터페이스나 조회/설정 함수만으로는 추상화가 이뤄지지 않는다. 아무 생각 없이 조회/설정 함수를 추가하는 방법이 가장 나쁘다.
+
 
 ## 자료/객체 비대칭 
 - 객체는 추상화 뒤로 자료를 숨긴 채 자료를 다루는 함수만 공개한다.
@@ -62,13 +84,13 @@ public class Circle {
 public class Geometry {
     public final double PI = 3.141592653589793;
     public double area(Object shape) throws NoSuchShapeException{
-        if (shape instanceof Square) {
+        if (shape instanceOf Square) {
             Square s = (Square)shape;
             return s.side * s.side;
-        } else if (shape instanceof Rectangle) {
+        } else if (shape instanceOf Rectangle) {
             Rectangle r = (Rectangle)shape;
             return r.height * r.width;
-        } else if (shape instanceof Circle) {
+        } else if (shape instanceOf Circle) {
             Circle c = (Circle)shape;
             return PI * c.radius * c.radius;
         } 
@@ -108,6 +130,7 @@ public class Circle implements Shape {
 - 따라서 객체와 자료 구조는 근본적으로 양분 된다.
 - 분별 있는 프로그래머는 모든 것이 객체라는 생각이 __미신__ 임을 잘 안다. 때로는 단순한 자료 구조와 절차적인 코드가 가장 적합한 상황도 있다.
 
+
 ## 디미터 법칙
 - 모듈은 자신이 조작하는 객체의 속사정을 몰라야 한다는 법칙이다. 즉, 객체는 조회 함수로 내부 구조를 공개하면 안 된다.
 - 좀 더 정확히 표현하자면, 디미터 법칙은 "클래스 C와 메서드 f는 다음과 같은 객체의 메서드만 호출해야 한다"고 주장한다.
@@ -123,7 +146,8 @@ final String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath();
 ### 기차 충돌
 - 흔히 위와 같은 코드를 기차 충돌이라 부른다.
 - 일반적으로 조잡하다 여겨지는 방식이므로 피하는 편이 좋다.
-> ### 간결하고 깔끔해 보이지 않는가
+
+### 간결하고 깔끔해 보이지 않는가
 ```
 Options opts = ctxt.getOptions();
 File scratchDir = opts.getScratchDir();
@@ -155,6 +179,7 @@ BufferedOutputStream bos = ctxt.createScratchFileStream(classFileName);
 ```
 - ctxt 객체에 임시 파일을 생성하라고 시키면 내부 구조를 드러내지 않으며, 모듈에서 해당 함수는 자신이 몰라야 하는 여러 객체를 탐색할 필요가 없다.
 - 따라서 디미터 법칙을 위반하지 않는다.
+
 
 ## 자료 전달 객체
 - 자료 구조체의 전형적인 형태는 공개 변수만 있고 함수가 없는 클래스다.
