@@ -1,5 +1,23 @@
 # Chapter 7 - 오류처리
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Chapter 7 - 오류처리](#chapter-7-오류처리)
+  - [오류 코드보다 예외를 사용하라](#오류-코드보다-예외를-사용하라)
+  - [Try-Catch-Finally 문부터 작성하라](#try-catch-finally-문부터-작성하라)
+  - [미확인 예외를 사용하라](#미확인-예외를-사용하라)
+  - [예외에 의미를 제공하라](#예외에-의미를-제공하라)
+  - [호출자를 고려해 예외 클래스를 정의하라](#호출자를-고려해-예외-클래스를-정의하라)
+  - [정상 흐름을 정의하라](#정상-흐름을-정의하라)
+  - [null을 반환하지 마라](#null을-반환하지-마라)
+  - [null을 전달하지 마라](#null을-전달하지-마라)
+  - [요약](#요약)
+
+<!-- /code_chunk_output -->
+
 ## 오류 코드보다 예외를 사용하라
 이전에는 예외를 지원하지않는 프로그래밍 언어가 많았다.
 그래서 오류 플래그를 설정하거나 호출자에게 오류코드를 반환하였다.
@@ -26,8 +44,6 @@ public class DeviceController {
     }
   }
   ...
-
-
 
 // Good
 public class DeviceController {
@@ -57,7 +73,6 @@ public class DeviceController {
 }
 }
 ```
-
 디바이스를 종료하는 알고리즘과 오류를 처리하는 알고리즘을 분리하여
 각 개념을 독립적으로 살펴보고 이해할 수 있다.
 
