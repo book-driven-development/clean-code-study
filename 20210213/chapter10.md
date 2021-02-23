@@ -16,7 +16,6 @@
 
 <!-- /code_chunk_output -->
 
-
 ## 클래스 체계  
 자바의 클레스 정의 관례
 1. static public 상수가 있다면 맨 처음 선언

@@ -24,7 +24,6 @@
 
 <!-- /code_chunk_output -->
 
-
 ## JUnit 프레임워크
 JUnit은 저자가 많다 하지만 시작은 켄트벡, 에릭 감마 두사람이 아틀란타 행 비행기를 타고가다 JUnit을 만들었다.
 문자열 비교 오류를 파악할때 ComparisonCompactor라는 모듈로 살펴보자.
