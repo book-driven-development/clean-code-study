@@ -1,6 +1,5 @@
 # Chapter 14 - 점진적인 개선
 
-
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
@@ -17,7 +16,6 @@
   - [결론](#결론)
 
 <!-- /code_chunk_output -->
-
 
 ## Intro
 점진적인 개선을 보여주는 사례를 알아보자
